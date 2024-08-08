@@ -11,6 +11,21 @@ if (navigator.clipboard && navigator.clipboard.writeText) {
 }
 
 const copy = document.querySelector('.copy-button');
+const buttons = document.querySelectorAll('.links');
+let lastSelectedButton = null;
+
+function handleClick(){
+    if(lastSelectedButton) {
+        lastSelectedButton.classList.remove('selected');
+    }
+    this.classList.toggle('selected');
+
+    lastSelectedButton = this;
+}
+
+buttons.forEach(function(buttons){
+    buttons.addEventListener('click', handleClick)
+});
 
 async function copyContent() {
 
